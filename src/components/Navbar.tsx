@@ -14,7 +14,7 @@ const Navbar = () => {
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: 1.7,
-      speed: 1.7,
+      speed: 1.2,
       effects: true,
       autoResize: true,
       ignoreMobileResize: true,
@@ -43,14 +43,14 @@ const Navbar = () => {
     <>
       <div className="header">
         <a href="/#" className="navbar-title" data-cursor="disable">
-          RC
+          <img src="/images/logo_blue.png" alt="Zonayed Hossain Joy" className="navbar-logo" />
         </a>
         <a
-          href="mailto:rajeshchittyal21@gmail.com"
+          href="mailto:joyhossain1694@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
         >
-          rajeshchittyal21@gmail.com
+          joyhossain1694@gmail.com
         </a>
         <ul>
           <li>
@@ -64,7 +64,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
+            <a data-href="#contact-form" href="#contact-form">
               <HoverLinks text="CONTACT" />
             </a>
           </li>

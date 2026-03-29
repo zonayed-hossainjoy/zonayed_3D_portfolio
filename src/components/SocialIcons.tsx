@@ -1,8 +1,11 @@
 import {
   FaGithub,
-  FaInstagram,
   FaLinkedinIn,
-  FaXTwitter,
+  FaFacebook,
+  FaBehance,
+  FaDribbble,
+  FaWhatsapp,
+  FaEnvelope,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
@@ -60,27 +63,42 @@ const SocialIcons = () => {
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
         <span>
-          <a href="https://github.com/rajeshchityal" target="_blank">
-            <FaGithub />
+          <a href="https://www.behance.net/zonayed" target="_blank">
+            <FaBehance />
           </a>
         </span>
         <span>
-          <a href="https://www.linkedin.com/in/rajeshchityal" target="_blank">
+          <a href="https://dribbble.com/Zonayed_h" target="_blank">
+            <FaDribbble />
+          </a>
+        </span>
+        <span>
+          <a href="https://www.linkedin.com/in/zonayed/" target="_blank">
             <FaLinkedinIn />
           </a>
         </span>
         <span>
-          <a href="https://x.com/rajeshchityal" target="_blank">
-            <FaXTwitter />
+          <a href="https://github.com/zonayed-hossainjoy" target="_blank">
+            <FaGithub />
           </a>
         </span>
         <span>
-          <a href="https://www.instagram.com/rajeshchityal" target="_blank">
-            <FaInstagram />
+          <a href="https://www.facebook.com/zonayed.hossain.106" target="_blank">
+            <FaFacebook />
+          </a>
+        </span>
+        <span>
+          <a href="mailto:joyhossain1694@gmail.com" target="_blank">
+            <FaEnvelope />
+          </a>
+        </span>
+        <span>
+          <a href="https://wa.me/8801581658592" target="_blank">
+            <FaWhatsapp />
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#">
+      <a className="resume-button" href="/images/Zonayed Hossain_UI_UX Designer .pdf" target="_blank" rel="noopener noreferrer">
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

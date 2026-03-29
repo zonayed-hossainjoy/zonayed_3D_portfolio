@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=La+Belle+Aurore&display=swap");
 
 :root {
   font-family: "Geist", sans-serif;
@@ -131,7 +132,13 @@ body {
 }
 
 @media screen and (max-width: 900px) {
+  .techstack {
+    height: 50vh;
+    margin-top: 20px;
+    margin-bottom: 0px;
+  }
   .techstack h2 {
-    font-size: 40px;
+    font-size: 30px;
+    top: 30px;
   }
 }

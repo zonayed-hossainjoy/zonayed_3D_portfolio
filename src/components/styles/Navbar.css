@@ -41,9 +41,13 @@
   font-weight: 500;
 }
 .navbar-title {
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+}
+.navbar-logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
 }
 @media only screen and (min-width: 500px) {
   .header {
@@ -57,8 +61,8 @@
   .header ul li {
     color: #eae5ec;
   }
-  .navbar-title {
-    font-size: 16px;
+  .navbar-logo {
+    height: 28px;
   }
 }
 @media only screen and (min-width: 900px) {
@@ -77,7 +81,7 @@
   .navbar-connect {
     font-size: 16px;
   }
-  .navbar-title {
-    font-size: 18px;
+  .navbar-logo {
+    height: 32px;
   }
 }

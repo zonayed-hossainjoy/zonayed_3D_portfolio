@@ -6,7 +6,7 @@ const Career = () => {
       <div className="career-container">
         <h2>
           My career <span>&</span>
-          <br /> experience
+          <br /> Education
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -15,43 +15,46 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Ikshan</h5>
+                <h4>UI/UX Designer</h4>
+                <h5>Solvetech Solutions</h5>
               </div>
-              <h3>2020</h3>
+              <div className="career-year">
+                <h3>2026</h3>
+                <span>Sep 25 – Now</span>
+              </div>
             </div>
             <p>
-              Built 6+ complete applications using React.js. Integrated backend
-              authentication using Node.js & MongoDB. Created responsive UI/UX
-              and designed wireframes using Figma.
+              Designing AI-driven dashboards for PropDNA and spearheading a total corporate website redesign. Currently developing a modern social media mobile application.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Senior Full Stack Developer</h4>
-                <h5>Monocept (Max Life Insurance)</h5>
+                <h4>System & UI/UX Designer</h4>
+                <h5>Hasans IT Solution</h5>
               </div>
-              <h3>2021</h3>
+              <div className="career-year">
+                <h3>2025</h3>
+                <span>Feb 25 – Aug 25</span>
+              </div>
             </div>
             <p>
-              Led two development teams on Mpro, a large-scale insurance
-              operations platform. Developed multiple modules using React.js &
-              migrated critical functionalities to Node.js microservices.
+              Designed end-to-end pharmacy (Pharma 360) and lawyer-client (UkilZone) management systems. Modernized website layouts to improve visitor engagement.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Logic Loop</h5>
+                <h4>B.Sc. in CSE</h4>
+                <h5>American International University-Bangladesh (AIUB)</h5>
               </div>
-              <h3>NOW</h3>
+              <div className="career-year">
+                <h3>2025</h3>
+                <span>Jan 21 - Apr 25</span>
+              </div>
             </div>
             <p>
-              Building Solid, a proprietary low-code platform using Angular,
-              Next.js & NestJS. Delivering production-ready CMS-based projects
-              including e-commerce, CRM, and import-export automation systems.
+              Graduated with a focus on software engineering and user-centric systems. Developed a strong foundation in frontend technologies and human-computer interaction.
             </p>
           </div>
         </div>

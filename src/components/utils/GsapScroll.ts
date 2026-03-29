@@ -66,7 +66,7 @@ export function setCharTimeline(
       tl1
         .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
         .to(camera.position, { z: 22 }, 0)
-        .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
+        .fromTo(".character-model", { x: "0%" }, { x: "-25%", duration: 1 }, 0)
         .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
         .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
         .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
@@ -120,6 +120,73 @@ export function setCharTimeline(
     }
   } else {
     if (character) {
+      // Mobile: Animate the character from standing to sitting-at-desk
+      // Character container is position: fixed, so it stays in viewport
+      // Content sections scroll OVER the character with solid backgrounds
+      const tM1 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".landing-section",
+          start: "top top",
+          end: "bottom top", 
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      tM1
+        // Fade out hero text
+        .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
+        .to(".landing-container", { y: "30%", duration: 0.6 }, 0)
+        // Zoom camera out to reveal full sitting character
+        .to(
+          camera.position,
+          { z: 70, y: 9, x: 2, duration: 1, ease: "power2.in" },
+          0
+        )
+        // Rotate character to typing pose
+        .to(
+          character.rotation,
+          { y: 0.8, x: 0.1, duration: 1, ease: "power2.in" },
+          0
+        )
+        // Tilt neck down to look at screen
+        .to(
+          neckBone!.rotation,
+          { x: 0.5, duration: 0.8 },
+          0.2
+        )
+        // Show monitor
+        .to(monitor.material, { opacity: 1, duration: 0.4 }, 0.5)
+        // Reveal monitor position
+        .fromTo(
+          monitor.position,
+          { y: -10, z: 2 },
+          { y: 0, z: 0, duration: 0.8 },
+          0.2
+        )
+        // Show screen light
+        .to(screenLight.material, { opacity: 1, duration: 0.4 }, 0.7)
+        // Fade rim light
+        .fromTo(
+          ".character-rim",
+          { opacity: 1, scaleX: 1.4 },
+          { opacity: 0, scale: 0, y: "-70%", duration: 0.8 },
+          0.3
+        );
+
+      // Push character upward once about section has fully covered the viewport
+      const tM1b = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".about-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      });
+      tM1b.to(".character-container", { yPercent: -100, duration: 1 }, 0);
+
+      // Show what-box-in when scrolled into view
       const tM2 = gsap.timeline({
         scrollTrigger: {
           trigger: ".what-box-in",

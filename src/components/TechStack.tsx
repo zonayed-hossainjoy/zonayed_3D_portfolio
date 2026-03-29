@@ -13,21 +13,27 @@ import {
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+  "/images/figma.webp",
+  "/images/affinity.webp",
+  "/images/sketch.webp",
+  "/images/Wireframecc.webp",
+  "/images/adobe.webp",
+  "/images/notion.webp",
+  "/images/buffer.webp",
+  "/images/canva.webp",
+  "/images/meta.webp",
+  "/images/googleads.webp",
+  "/images/figma.webp",
+  "/images/figma.webp",
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
+const isMobile = window.innerWidth <= 768;
+
 const spheres = [...Array(30)].map(() => ({
-  scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+  scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)] * (isMobile ? 1.8 : 1.5),
 }));
 
 type SphereProps = {
@@ -55,9 +61,9 @@ function SphereGeo({
       .normalize()
       .multiply(
         new THREE.Vector3(
-          -50 * delta * scale,
-          -150 * delta * scale,
-          -50 * delta * scale
+          -10 * delta * scale,
+          -30 * delta * scale,
+          -10 * delta * scale
         )
       );
 
@@ -66,18 +72,19 @@ function SphereGeo({
 
   return (
     <RigidBody
-      linearDamping={0.75}
-      angularDamping={0.15}
+      linearDamping={0.1}
+      angularDamping={0.05}
       friction={0.2}
       position={[r(20), r(20) - 25, r(20) - 10]}
       ref={api}
       colliders={false}
     >
-      <BallCollider args={[scale]} />
+      <BallCollider args={[scale]} restitution={1} />
       <CylinderCollider
         rotation={[Math.PI / 2, 0, 0]}
         position={[0, 0, 1.2 * scale]}
         args={[0.15 * scale, 0.275 * scale]}
+        restitution={1}
       />
       <mesh
         castShadow
@@ -86,6 +93,16 @@ function SphereGeo({
         geometry={sphereGeometry}
         material={material}
         rotation={[0.3, 1, 1]}
+        onPointerDown={(e) => {
+          e.stopPropagation();
+          const force = 500 * scale;
+          const randomImpulse = new THREE.Vector3(
+            (Math.random() - 0.5) * force,
+            (Math.random() - 0.5) * force,
+            (Math.random() - 0.5) * force
+          );
+          api.current?.applyImpulse(randomImpulse, true);
+        }}
       />
     </RigidBody>
   );
@@ -173,7 +190,12 @@ const TechStack = () => {
       <Canvas
         shadows
         gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
+        camera={{
+          position: [0, 0, 20],
+          fov: window.innerWidth <= 768 ? 55 : 40,
+          near: 1,
+          far: 100
+        }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
       >

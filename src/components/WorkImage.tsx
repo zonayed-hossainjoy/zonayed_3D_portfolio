@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { MdArrowOutward } from "react-icons/md";
 
 interface Props {
   image: string;
   alt?: string;
   video?: string;
-  link?: string;
+  onViewDetails?: () => void;
+  projectLink?: string;
+  disableHover?: boolean;
 }
 
 const WorkImage = (props: Props) => {
   const [isVideo, setIsVideo] = useState(false);
   const [video, setVideo] = useState("");
+
   const handleMouseEnter = async () => {
     if (props.video) {
       setIsVideo(true);
@@ -21,24 +23,52 @@ const WorkImage = (props: Props) => {
     }
   };
 
+  const handleMouseLeave = () => {
+    setIsVideo(false);
+  };
+
   return (
     <div className="work-image">
-      <a
+      <div
         className="work-image-in"
-        href={props.link}
         onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => setIsVideo(false)}
-        target="_blank"
-        data-cursor={"disable"}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => props.onViewDetails?.()}
       >
-        {props.link && (
-          <div className="work-link">
-            <MdArrowOutward />
-          </div>
-        )}
         <img src={props.image} alt={props.alt} />
         {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
-      </a>
+
+        {/* Hover Overlay with Buttons — visibility handled by CSS :hover */}
+        {!props.disableHover && (
+          <div className="work-image-overlay">
+            <button
+              className="overlay-btn overlay-btn-details"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                if (props.onViewDetails) {
+                  props.onViewDetails();
+                }
+              }}
+              data-cursor="disable"
+            >
+              View Details
+            </button>
+            {props.projectLink && (
+              <a
+                href={props.projectLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="overlay-btn overlay-btn-project"
+                onClick={(e) => e.stopPropagation()}
+                data-cursor="disable"
+              >
+                See Project
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

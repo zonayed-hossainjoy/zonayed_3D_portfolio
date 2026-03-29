@@ -1,0 +1,380 @@
+/* ===== Contact Form Section ===== */
+.cf-section {
+  width: var(--cWidth);
+  max-width: 1920px;
+  margin: auto;
+  padding: 80px 0;
+  position: relative;
+  z-index: 9;
+}
+
+/* Card wrapper */
+.cf-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(10, 14, 23, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 60px;
+  overflow: hidden;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* Teal glow on top-right */
+.cf-glow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cf-inner {
+  display: flex;
+  gap: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Left Column ===== */
+.cf-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cf-heading {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0 0 28px;
+  letter-spacing: 0.3px;
+}
+
+.cf-script {
+  font-family: "La Belle Aurore", cursive;
+  font-size: 34px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Bullet points */
+.cf-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.cf-bullet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+  opacity: 0.85;
+}
+
+.cf-check {
+  color: var(--accentColor);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Profile section */
+.cf-profile {
+  margin-bottom: 20px;
+}
+
+.cf-avatar {
+  width: 150px;
+  height: 170px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.cf-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Blue tint overlay on photo */
+.cf-avatar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(94, 234, 212, 0.05) 100%
+  );
+  pointer-events: none;
+}
+
+.cf-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.cf-role {
+  font-size: 12px;
+  font-weight: 300;
+  margin: 0;
+  opacity: 0.6;
+  letter-spacing: 0.3px;
+}
+
+.cf-phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.cf-wa-icon {
+  font-size: 20px;
+  color: #25d366;
+}
+
+.cf-book-call {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accentColor);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: opacity 0.3s;
+  width: fit-content;
+}
+
+.cf-book-call:hover {
+  opacity: 0.8;
+  color: var(--accentColor);
+}
+
+/* ===== Right Column - Form ===== */
+.cf-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cf-field label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.cf-field input,
+.cf-field textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: "Geist", sans-serif;
+  color: #eae5ec;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  resize: none;
+}
+
+.cf-field input::placeholder,
+.cf-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 300;
+}
+
+.cf-field input:focus,
+.cf-field textarea:focus {
+  border-color: var(--accentColor);
+  box-shadow: 0 0 0 2px rgba(94, 234, 212, 0.08);
+}
+
+/* Email / WhatsApp row */
+.cf-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.cf-field-half {
+  flex: 1;
+}
+
+.cf-or {
+  font-size: 13px;
+  opacity: 0.4;
+  font-weight: 300;
+  padding-bottom: 14px;
+  flex-shrink: 0;
+}
+
+/* Project Goal Tags */
+.cf-goals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cf-goal-tag {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-family: "Geist", sans-serif;
+  font-weight: 400;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  color: #eae5ec;
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+
+.cf-goal-tag:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cf-goal-tag.cf-goal-active {
+  background: var(--accentColor);
+  border-color: var(--accentColor);
+  color: var(--backgroundColor);
+  font-weight: 500;
+}
+
+/* Submit button */
+.cf-submit {
+  align-self: flex-start;
+  padding: 14px 50px;
+  font-size: 16px;
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: linear-gradient(135deg, var(--accentColor), #2dd4bf);
+  color: var(--backgroundColor);
+  box-shadow: 0 0 30px rgba(94, 234, 212, 0.2);
+  margin-top: 5px;
+}
+
+.cf-submit:hover {
+  box-shadow: 0 0 40px rgba(94, 234, 212, 0.35);
+  transform: translateY(-1px);
+}
+
+.cf-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.cf-submit.sending {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}
+
+.cf-submit.success {
+  background: linear-gradient(135deg, #4ade80, #22c55e);
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.2);
+}
+
+.cf-submit.error {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  box-shadow: 0 0 30px rgba(248, 113, 113, 0.2);
+}
+
+/* ===== Responsive ===== */
+@media only screen and (max-width: 900px) {
+  .cf-card {
+    padding: 40px 30px;
+  }
+
+  .cf-inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .cf-heading {
+    font-size: 24px;
+  }
+
+  .cf-script {
+    font-size: 28px;
+  }
+
+  .cf-submit {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .cf-section {
+    padding: 50px 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .cf-card {
+    padding: 30px 20px;
+    border-radius: 14px;
+  }
+
+  .cf-heading {
+    font-size: 20px;
+  }
+
+  .cf-script {
+    font-size: 24px;
+  }
+
+  .cf-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .cf-or {
+    display: none;
+  }
+
+  .cf-bullet {
+    font-size: 12px;
+  }
+
+  .cf-goal-tag {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+}

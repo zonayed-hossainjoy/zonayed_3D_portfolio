@@ -1,29 +1,35 @@
-import { useEffect, useRef } from "react";
+import React from "react";
 import "./styles/WhatIDo.css";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const WhatIDo = () => {
-  const containerRef = useRef<(HTMLDivElement | null)[]>([]);
-  const setRef = (el: HTMLDivElement | null, index: number) => {
-    containerRef.current[index] = el;
-  };
-  useEffect(() => {
-    if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const isActive = container.classList.contains("what-content-active");
+    const parent = container.parentElement;
+
+    if (!parent) return;
+
+    const allItems = Array.from(parent.querySelectorAll(".what-content"));
+
+    if (isActive) {
+      // If already active, close everything
+      allItems.forEach((el) => {
+        el.classList.remove("what-content-active", "what-sibling");
+      });
+    } else {
+      // Open this one, shrink others
+      allItems.forEach((el) => {
+        if (el === container) {
+          el.classList.add("what-content-active");
+          el.classList.remove("what-sibling");
+        } else {
+          el.classList.remove("what-content-active");
+          el.classList.add("what-sibling");
         }
       });
     }
-    return () => {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.removeEventListener("click", () => handleClick(container));
-        }
-      });
-    };
-  }, []);
+  };
+
   return (
     <div className="whatIDO">
       <div className="what-box">
@@ -60,7 +66,7 @@ const WhatIDo = () => {
           </div>
           <div
             className="what-content what-noTouch"
-            ref={(el) => setRef(el, 0)}
+            onClick={handleClick}
           >
             <div className="what-border1">
               <svg height="100%">
@@ -87,29 +93,28 @@ const WhatIDo = () => {
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>FRONTEND</h3>
-              <h4>Building Interactive UIs</h4>
+              <h3>UI/UX DESIGN</h3>
+              <h4>Crafting User-Centric Experiences</h4>
               <p>
-                Crafting performant, responsive interfaces with modern frameworks.
-                From SPAs to micro-frontends, I deliver pixel-perfect experiences.
+                Designing intuitive, engaging interfaces from wireframes to high-fidelity prototypes. Focusing on responsive web and mobile UI.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
-                <div className="what-tags">React.js</div>
-                <div className="what-tags">Angular</div>
-                <div className="what-tags">Next.js</div>
-                <div className="what-tags">TypeScript</div>
-                <div className="what-tags">JavaScript</div>
-                <div className="what-tags">Material UI</div>
-                <div className="what-tags">HTML5</div>
-                <div className="what-tags">CSS3</div>
+                <div className="what-tags">Figma</div>
+                <div className="what-tags">Affinity</div>
+                <div className="what-tags">Sketch</div>
+                <div className="what-tags">Wireframing</div>
+                <div className="what-tags">Prototyping</div>
+                <div className="what-tags">User Research</div>
+                <div className="what-tags">UX Flows</div>
+                <div className="what-tags">Design Systems</div>
               </div>
               <div className="what-arrow"></div>
             </div>
           </div>
           <div
             className="what-content what-noTouch"
-            ref={(el) => setRef(el, 1)}
+            onClick={handleClick}
           >
             <div className="what-border1">
               <svg height="100%">
@@ -126,22 +131,23 @@ const WhatIDo = () => {
             </div>
             <div className="what-corner"></div>
             <div className="what-content-in">
-              <h3>BACKEND</h3>
-              <h4>Scalable Server Architecture</h4>
+              <h3>MEDIA STRATEGIST</h3>
+              <h4>Brand Growth & Content Strategy</h4>
               <p>
-                Designing robust APIs and microservices. From CMS platforms to
-                complex business logic, I build backends that scale.
+                Elevating digital presence through strategic storytelling. I build organic brand authority and manage high-impact content calendars that convert followers into customers.
               </p>
-              <h5>Skillset & tools</h5>
+              <h5>Tech Stack</h5>
               <div className="what-content-flex">
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">NestJS</div>
-                <div className="what-tags">Express.js</div>
-                <div className="what-tags">MongoDB</div>
-                <div className="what-tags">PostgreSQL</div>
-                <div className="what-tags">REST APIs</div>
-                <div className="what-tags">Microservices</div>
-                <div className="what-tags">Python</div>
+                <div className="what-tags">Adobe Creative Suite</div>
+                <div className="what-tags">Notion</div>
+                <div className="what-tags">Buffer</div>
+                <div className="what-tags">Canva Pro</div>
+                <div className="what-tags">Meta Business Suite</div>
+                <div className="what-tags">LinkedIn Analytics</div>
+                <div className="what-tags">Brand Positioning</div>
+                <div className="what-tags">Audience Insights</div>
+                <div className="what-tags">Lead Generation</div>
+                <div className="what-tags">Trend Analysis</div>
               </div>
               <div className="what-arrow"></div>
             </div>
@@ -153,18 +159,3 @@ const WhatIDo = () => {
 };
 
 export default WhatIDo;
-
-function handleClick(container: HTMLDivElement) {
-  container.classList.toggle("what-content-active");
-  container.classList.remove("what-sibling");
-  if (container.parentElement) {
-    const siblings = Array.from(container.parentElement.children);
-
-    siblings.forEach((sibling) => {
-      if (sibling !== container) {
-        sibling.classList.remove("what-content-active");
-        sibling.classList.toggle("what-sibling");
-      }
-    });
-  }
-}
